@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Color</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-direction: column;
+            height: 200px;
+        }
+
+        .display {
+            background-color: #202421;
+            color: white;
+            padding: 20px 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            background: #202421;
+            outline: none;
+            transition: 0.3s ease;
+            color: white;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="display">
+            Background Color:
+            <span class="hexColor">#FFFFFF</span>
+        </h1>
+        <button class="btn" id="changeBtn">Change Background Color</button>
+    </div>
+    <script>
+        var changeBtn = document.getElementById('changeBtn')
+        var hexColor = document.querySelector('.hexColor')
+
+        var hexValues = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F']
+
+        changeBtn.addEventListener('click', () => {
+            let hexSymbol = '#'
+            for (let i = 0; i < 6; i++)
+                hexSymbol += hexValues[getRandomNumber()]
+
+            hexColor.textContent = hexSymbol
+            document.body.style.background = hexSymbol
+        })
+
+        var getRandomNumber = () => {
+            return Math.floor(Math.random() * hexValues.length)
+        }
+    </script>
+</body>
+
+</html>
